@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>First</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>First</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -41,5 +41,15 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>フォトライブラリーにアクセスするのを許可します。</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>フォトライブラリーに保存するのを許可します。</string>
+	<key>NSCameraUsageDescription</key>
+	<string>カメラにアクセスするのを許可します。</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>位置情報へのアクセス（使用中のみ許可）</string>
+	<key>NSLocationUsageDescription</key>
+	<string>位置情報の使用を許可します。</string>
 </dict>
 </plist>

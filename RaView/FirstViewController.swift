@@ -20,6 +20,8 @@ class  FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "RaView"
+        
         let viewX = self.view.frame.width
         let viewY = self.view.frame.height
         
@@ -28,28 +30,21 @@ class  FirstViewController: UIViewController {
         scrollView.frame = CGRect(x: 0, y: 0, width: viewX, height: viewY)
         scrollView.indicatorStyle = .white
         scrollView.center = self.view.center
-        scrollView.contentSize = CGSize(width: viewX, height: viewY * 3)
+        scrollView.contentSize = CGSize(width: viewX, height: viewY * 1.5)
         scrollView.isScrollEnabled = true
-        scrollView.backgroundColor = #colorLiteral(red: 0, green: 1, blue: 0.8448454738, alpha: 1)
-        
-        //set UITabBarItem
+        scrollView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         
-        //set imageview
+        //set imageview //Front, Back に変える予定
         let kanan = UIImageView()
-        kanan.frame = CGRect(x: ((scrollView.contentSize.width-300)/2), y: 200, width: 300, height: 377)
+        kanan.frame = CGRect(x: 0, y: 50, width: viewX, height: 500)
         kanan.image = UIImage(named: "kanan")
         scrollView.addSubview(kanan)
         
         let mari = UIImageView()
-        mari.frame = CGRect(x: ((scrollView.contentSize.width-300)/2), y: 700, width: 300, height: 377)
+        mari.frame = CGRect(x: 0, y: 600, width: viewX, height: 500)
         mari.image = UIImage(named: "mari")
         scrollView.addSubview(mari)
-        
-        let image = UIImageView()
-        image.frame = CGRect(x: ((scrollView.contentSize.width-300)/2), y: 1500, width: 100, height: 120)
-        image.image = UIImage.fontAwesomeIcon(name: .github, style: .brands, textColor: .black, size: CGSize(width: 100, height: 120))
-        scrollView.addSubview(image)
         
         //set clearbutton
         let clearButton_kanan = ClearButton(imv: kanan)
@@ -80,7 +75,7 @@ class  FirstViewController: UIViewController {
             //first transform
             sender.value.transform = CGAffineTransform(scaleX: 0.01, y: 1.0)
         }, completion: { (finished: Bool) in
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.changeImage(iv: sender.value)
                 //second transform
                 sender.value.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
