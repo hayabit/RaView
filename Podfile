@@ -11,6 +11,7 @@ target 'RaView' do
   use_frameworks!
   pod ‘FontAwesome.swift’
   pod 'Firebase/Core'
+  pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
   pod 'UITextView+Placeholder'
 # Pods for RaView
