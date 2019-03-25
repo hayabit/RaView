@@ -14,6 +14,8 @@ import UITextView_Placeholder
 
 extension String
 {
+    // MARK: hashtags()
+    //       文字列内のハッシュタグを正規表現によって抽出し, 配列に保存する.
     func hashtags() -> [String]
     {
         if let regex = try? NSRegularExpression(pattern: "#[a-z0-9\\p{Han}\\p{Hiragana}\\p{Katakana}ー]+", options: .caseInsensitive)
@@ -74,7 +76,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                                                        width: imageButton_image.frame.width,
                                                        height: imageButton_image.frame.height))
         imageButton_button.setTitle(" ", for: .normal)
-        imageButton_button.addTarget(self, action: #selector(postDB), for: .touchUpInside)
+        imageButton_button.addTarget(self, action: #selector(storeDataInDB), for: .touchUpInside)
         self.view.addSubview(imageButton_button)
         
         let label_image = UILabel()
@@ -99,15 +101,20 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
     }
     
-    // 入力画面ないしkeyboardの外を押したら、キーボードを閉じる処理
+    // MARK: - 入力画面ないしkeyboardの外を押したら、キーボードを閉じる処理
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (self.textView.isFirstResponder) {
             self.textView.resignFirstResponder()
         }
     }
+    
+    // MARK: - Storage
+    func saveSelectedImageToStorage(){
+        
+    }
 
-    // Database
-    @objc func postDB(){
+    //  MARK: - Database
+    @objc func storeDataInDB(){
         
         let db = Firestore.firestore()
         // これをボタンによって発火する関数としたい.
@@ -142,7 +149,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         textView.text = "posting complete"
     }
     
-    // image
+    // MARK: - Image
     @objc func selectImageFromPhotoLibrary() {
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
