@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Second View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="rJe-4I-0vH">
             <objects>
-                <viewController storyboardIdentifier="Second" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Bjl-w0-E5o" customClass="SecondViewController" customModule="RaView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Search" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Bjl-w0-E5o" customClass="SearchViewController" customModule="RaView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oAN-g3-BBq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -26,7 +26,7 @@ import UITextView_Placeholder
 //    }
 //}
 
-class SecondViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class SearchViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     // used Editing caption
     var textView = UITextView()

@@ -24,36 +24,36 @@ class MainTabBarController: UITabBarController {
         // ページを格納する配列
         var viewControllers: [UIViewController] = []
         
-        let firstSB = UIStoryboard(name: "First", bundle: nil)
-        let firstVC = firstSB.instantiateInitialViewController()! as UIViewController
-        firstVC.tabBarItem = UITabBarItem(title: "", image: UIImage.fontAwesomeIcon(name: .home, style: .solid, textColor: .black, size: CGSize(width: 30, height: 30)), tag: 1)
-        viewControllers.append(firstVC)
+        let homeSB = UIStoryboard(name: "Home", bundle: nil)
+        let homeVC = homeSB.instantiateInitialViewController()! as UIViewController
+        homeVC.tabBarItem = UITabBarItem(title: "", image: UIImage.fontAwesomeIcon(name: .home, style: .solid, textColor: .black, size: CGSize(width: 30, height: 30)), tag: 1)
+        viewControllers.append(homeVC)
         
-        let secondSB = UIStoryboard(name: "Second", bundle: nil)
-        let secondVC = secondSB.instantiateInitialViewController()! as UIViewController
-        secondVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage.fontAwesomeIcon(name: .search, style: .solid, textColor: .black, size: CGSize(width: 30, height: 30)), tag: 2)
-        viewControllers.append(secondVC)
+        let searchSB = UIStoryboard(name: "Search", bundle: nil)
+        let searchVC = searchSB.instantiateInitialViewController()! as UIViewController
+        searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage.fontAwesomeIcon(name: .search, style: .solid, textColor: .black, size: CGSize(width: 30, height: 30)), tag: 2)
+        viewControllers.append(searchVC)
         
         let thirdSB = UIStoryboard(name: "Third", bundle: nil)
         let thirdVC = thirdSB.instantiateInitialViewController()! as UIViewController
         thirdVC.tabBarItem = UITabBarItem(title: "Third", image: UIImage.fontAwesomeIcon(name: .plusSquare, style: .regular, textColor: .black, size: CGSize(width: 30, height: 30)), tag: 3)
         viewControllers.append(thirdVC)
         
-        let PostSB = UIStoryboard(name: "Post", bundle: nil)
-        let PostVC = PostSB.instantiateInitialViewController()! as UIViewController
-        PostVC.tabBarItem = UITabBarItem(title: "Post", image: UIImage.fontAwesomeIcon(name: .plusSquare, style: .regular, textColor: .black, size: CGSize(width: 30, height: 30)), tag: 4)
-        viewControllers.append(PostVC)
+        let postSB = UIStoryboard(name: "Post", bundle: nil)
+        let postVC = postSB.instantiateInitialViewController()! as UIViewController
+        postVC.tabBarItem = UITabBarItem(title: "Post", image: UIImage.fontAwesomeIcon(name: .plusSquare, style: .regular, textColor: .black, size: CGSize(width: 30, height: 30)), tag: 4)
+        viewControllers.append(postVC)
         
         self.viewControllers = viewControllers.map{ UINavigationController(rootViewController: $0)}
         self.setViewControllers(viewControllers, animated: false)
 
         
-        let naviVC = CustomNavigationController(rootVC: firstVC, naviBarClass: CustomNavigationBar.self, toolbarClass: nil)
-//        let naviVC2 = CustomNavigationController(rootVC: secondVC, naviBarClass: CustomNavigationBar.self, toolbarClass: nil)
+        let naviVC = CustomNavigationController(rootVC: homeVC, naviBarClass: CustomNavigationBar.self, toolbarClass: nil)
+//        let naviVC2 = CustomNavigationController(rootVC: searchVC, naviBarClass: CustomNavigationBar.self, toolbarClass: nil)
 //        let naviVC3 = CustomNavigationController(rootVC: thirdVC, naviBarClass: CustomNavigationBar.self, toolbarClass: nil)
         
 //        let tabs = [naviVC, naviVC2, naviVC3]
-        let tabs = [naviVC, secondVC, thirdVC, PostVC]
+        let tabs = [naviVC, searchVC, thirdVC, postVC]
         self.viewControllers = tabs
     }
     

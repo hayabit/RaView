@@ -15,7 +15,7 @@ class MyClearButton: UIButton {
     
 }
 
-class  FirstViewController: UIViewController {
+class  HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
