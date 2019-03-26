@@ -142,10 +142,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let storageRef = storage.reference()
         
-        
-        
         let localFile = URL(string: "\(targetImageURL)")!
-        
         
         let imageRef = storageRef.child("images/\(timeStamp).jpg")
         
