@@ -60,7 +60,7 @@ class  HomeViewController: UIViewController {
         
         let kanan = UIImageView()
         kanan.frame = CGRect(x: 0, y: 0, width: baseView.frame.width, height: baseView.frame.height)
-        kanan.image = UIImage(named: "kanan")
+        kanan.image = UIImage(named: "placeholder_image")
         kanan.contentMode = .scaleAspectFit
         baseView.addSubview(kanan)
         
@@ -68,7 +68,7 @@ class  HomeViewController: UIViewController {
         let textView = UITextView()
         textView.text = "aaaaaaaaaaaaa #aaa #bbbb #ccc"
         textView.isEditable = false
-        textView.frame = CGRect(x: 50, y: 500, width: viewX, height: 200)
+        textView.frame = CGRect(x: 10, y: 500, width: viewX, height: 200)
         
         let attributedText = attributeText(textView: textView)
         
@@ -80,7 +80,7 @@ class  HomeViewController: UIViewController {
         
         let mari = UIImageView()
         mari.frame = CGRect(x: 0, y: 0, width: baseView2.frame.width, height: baseView2.frame.height)
-        mari.image = UIImage(named: "mari")
+        mari.image = UIImage(named: "placeholder_image")
         mari.contentMode = .scaleAspectFit
         baseView2.addSubview(mari)
         
@@ -174,10 +174,10 @@ class  HomeViewController: UIViewController {
     // MARK: - define changeImage
     //         表の画像と裏の画像を入れ替える
     func changeImage(iv: UIImageView) {
-        if iv.image == UIImage(named: "kanan") {
-            iv.image = UIImage(named: "mari")
+        if iv.image == UIImage(named: "placeholder_image") {
+            iv.image = UIImage(named: "placeholder_image")
         }else {
-            iv.image = UIImage(named: "kanan")
+            iv.image = UIImage(named: "placeholder_image")
         }
     }
     

@@ -102,6 +102,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         // MARK: - set selectImage
         selectImage.frame = CGRect(x: 0, y: 0, width: base_frame.width, height: base_frame.height)
+        selectImage.image = UIImage(named: "placeholder_image")
         
         self.view.addSubview(baseView)
         self.baseView.addSubview(selectImage)
