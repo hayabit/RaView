@@ -9,12 +9,25 @@
 import UIKit
 import FontAwesome_swift
 import HeartButton
+import SwiftyAttributedString
 
 // MARK: - Custom ClearButton
 class MyClearButton: UIButton {
     
     var value = UIImageView()
     
+}
+
+extension NSAttributedString {
+    
+    func replace(pattern: String) -> NSMutableAttributedString {
+        let mutableAttributedString = self.mutableCopy() as! NSMutableAttributedString
+        let mutableString = mutableAttributedString.mutableString
+        let range = mutableString.range(of: pattern)
+//            mutableAttributedString.replaceCharacters(in: range, with: replacement)
+        mutableAttributedString.addAttributes([.foregroundColor: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)], range: range)
+        return mutableAttributedString
+    }
 }
 
 class  HomeViewController: UIViewController {
@@ -52,15 +65,14 @@ class  HomeViewController: UIViewController {
         baseView.addSubview(kanan)
         
         // MARK: set caption
-        let text = UITextView()
-        text.text = "aaaaaaaaaaaaa #aaa"
-        text.isEditable = false
-//        にするとできるっぽい. Firstで使えるね.
-        text.dataDetectorTypes = .link
-        text.linkTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)]
-        text.frame = CGRect(x: 50, y: 500, width: viewX, height: 200)
-        text.font = UIFont.systemFont(ofSize: 17.0)
-        scrollView.addSubview(text)
+        let textView = UITextView()
+        textView.text = "aaaaaaaaaaaaa #aaa #bbbb #ccc"
+        textView.isEditable = false
+        textView.frame = CGRect(x: 50, y: 500, width: viewX, height: 200)
+        
+        let attributedText = attributeText(textView: textView)
+        
+        scrollView.addSubview(attributedText)
         
         let baseView2 = UIImageView()
         baseView2.frame = CGRect(x: 0, y: viewY + 50, width: viewX, height: 400)
@@ -100,6 +112,31 @@ class  HomeViewController: UIViewController {
         //add Scroll View
         self.view.addSubview(scrollView)
         
+    }
+    
+    // MARK: - define attributeText
+    //         ハッシュタグに色付けをする. リンクをつけることも可能
+    func attributeText(textView: UITextView) -> UITextView {
+        
+        let pattern = "#[a-z0-9\\p{Han}\\p{Hiragana}\\p{Katakana}ー]+"
+        let attributedString : String = textView.text
+        
+        var ans : [String] = []
+        if attributedString.pregMatch(pattern: pattern, matches: &ans) {
+            print("match")
+        } else {
+            print("not match")
+        }
+        
+        textView.attributedText = attributedString
+            .attr
+            .font(.systemFont(ofSize: 20))
+            .apply()
+        
+        for data in ans {
+            textView.attributedText = textView.attributedText.replace(pattern: data)
+        }
+        return textView
     }
 
     // MARK: - define ClearButton

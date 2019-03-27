@@ -1,0 +1,6 @@
+framework module SwiftyAttributedString {
+  umbrella header "SwiftyAttributedString-umbrella.h"
+
+  export *
+  module * { export * }
+}

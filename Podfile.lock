@@ -102,6 +102,7 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.7.0)
+  - SwiftyAttributedString (1.0.1)
   - "UITextView+Placeholder (1.2.1)"
 
 DEPENDENCIES:
@@ -110,6 +111,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - FontAwesome.swift
   - HeartButton
+  - SwiftyAttributedString
   - "UITextView+Placeholder"
 
 SPEC REPOS:
@@ -132,6 +134,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - SwiftyAttributedString
     - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
@@ -153,8 +156,9 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
+  SwiftyAttributedString: 0a90d4e6d8a7ebf9432edd75cf992ae2d09ffdcd
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: 2463f3c27662e6b1e773222dc219eecf3ae8c1c8
+PODFILE CHECKSUM: d413e59e3237450fecc3f516ab58f665d427b651
 
 COCOAPODS: 1.6.1

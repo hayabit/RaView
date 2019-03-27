@@ -26,6 +26,7 @@
 		CA97BD4E2233624800E304FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA97BD4D2233624700E304FF /* GoogleService-Info.plist */; };
 		CA97BD5122477BD500E304FF /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA97BD5022477BD500E304FF /* PostViewController.swift */; };
 		CA97BD5322477FA400E304FF /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA97BD5222477FA400E304FF /* Post.storyboard */; };
+		CA97BD57224B81B500E304FF /* HashTagController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA97BD56224B81B500E304FF /* HashTagController.swift */; };
 		CD1CC66EFA7212CF21C00C0F /* Pods_RaViewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98E3C5BA1BDE011A773FF341 /* Pods_RaViewTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		CA97BD4D2233624700E304FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA97BD5022477BD500E304FF /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		CA97BD5222477FA400E304FF /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
+		CA97BD56224B81B500E304FF /* HashTagController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTagController.swift; sourceTree = "<group>"; };
 		DF1DA9239B252D13FD847537 /* Pods-RaViewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaViewTests.debug.xcconfig"; path = "Target Support Files/Pods-RaViewTests/Pods-RaViewTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E8C37C929C5028774AE7CD8D /* Pods-RaViewUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaViewUITests.release.xcconfig"; path = "Target Support Files/Pods-RaViewUITests/Pods-RaViewUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FA73A28ACAC7E41B097F0E7E /* Pods-RaViewUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RaViewUITests.debug.xcconfig"; path = "Target Support Files/Pods-RaViewUITests/Pods-RaViewUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				CA97BD4722293D8E00E304FF /* CustomNavigationController.swift */,
 				CA97BD4922293F9100E304FF /* CustomNavigationBar.swift */,
 				CA97BD4B222948D900E304FF /* MainTabBarController.swift */,
+				CA97BD56224B81B500E304FF /* HashTagController.swift */,
 				CA166C64221EBEB70038DD3C /* HomeViewController.swift */,
 				CA97BC112226F5A100E304FF /* Home.storyboard */,
 				CA97BD3F2229225300E304FF /* SearchViewContrller.swift */,
@@ -394,6 +397,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/HeartButton/HeartButton.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyAttributedString/SwiftyAttributedString.framework",
 				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -410,6 +414,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HeartButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyAttributedString.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -494,6 +499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA97BD57224B81B500E304FF /* HashTagController.swift in Sources */,
 				CA97BD4A22293F9100E304FF /* CustomNavigationBar.swift in Sources */,
 				CA166C65221EBEB70038DD3C /* HomeViewController.swift in Sources */,
 				CA97BD4822293D8E00E304FF /* CustomNavigationController.swift in Sources */,
