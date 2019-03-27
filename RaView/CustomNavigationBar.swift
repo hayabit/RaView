@@ -22,7 +22,7 @@ class CustomNavigationBar: UINavigationBar {
     }
     
     func setup(){
-        self.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)    //バーの色
+        self.barTintColor = #colorLiteral(red: 0.9171380401, green: 0.9172917604, blue: 0.9171177745, alpha: 1)    //バーの色
         self.tintColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)    //バー上のアイテムの色
         //タイトルテキストの色
         self.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)]

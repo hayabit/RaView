@@ -41,8 +41,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var textView = UITextView()
     // main image
     var selectImage = UIImageView()
-    // target image URL
-    var imageURL = NSURL()
+    // select image URL
+    var selectImageURL = NSURL()
     
     var timeStamp = String()
     
@@ -52,11 +52,13 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let viewX = self.view.frame.width
         
+        // MARK: - set label
         let label_caption = UILabel()
         label_caption.text = "Caption"
         label_caption.frame = CGRect(x: 20, y: 100, width: 80, height: 30)
         self.view.addSubview(label_caption)
         
+        // MARK: - set textView
         textView.frame = CGRect(x: 10, y: 140, width: viewX - 20, height: 300)
         textView.layer.borderWidth = 1
         textView.font = UIFont.systemFont(ofSize: 14.0)
@@ -67,26 +69,30 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         self.view.addSubview(textView)
         
-        let imageButton_image = UIImageView()
-        imageButton_image.frame = CGRect(x: 100, y: 100, width: 30, height: 30)
-        imageButton_image.image = UIImage.fontAwesomeIcon(name: .paperPlane,
+        // MARK: - set postButton
+        let postButton_image = UIImageView()
+        postButton_image.frame = CGRect(x: 100, y: 100, width: 30, height: 30)
+        postButton_image.image = UIImage.fontAwesomeIcon(name: .paperPlane,
                                                           style: .regular,
                                                           textColor: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1),
                                                           size: CGSize(width: 30, height: 30))
-        self.view.addSubview(imageButton_image)
+        self.view.addSubview(postButton_image)
         
-        let imageButton_button = UIButton(frame:CGRect(x: imageButton_image.frame.origin.x,
-                                                       y: imageButton_image.frame.origin.y,
-                                                       width: imageButton_image.frame.width,
-                                                       height: imageButton_image.frame.height))
-        imageButton_button.setTitle(" ", for: .normal)
-        imageButton_button.addTarget(self, action: #selector(storeDataInDB), for: .touchUpInside)
-        self.view.addSubview(imageButton_button)
+        let postButton_button = UIButton(frame:CGRect(x: postButton_image.frame.origin.x,
+                                                       y: postButton_image.frame.origin.y,
+                                                       width: postButton_image.frame.width,
+                                                       height: postButton_image.frame.height))
+        postButton_button.setTitle(" ", for: .normal)
+        postButton_button.addTarget(self, action: #selector(storeDataInDB), for: .touchUpInside)
+        self.view.addSubview(postButton_button)
         
+        // MARK: - set label
         let label_image = UILabel()
         label_image.text = "Select Image"
         label_image.frame = CGRect(x: 20, y: 460, width: 150, height: 30)
         self.view.addSubview(label_image)
+        
+        // MARK: - set baseView
         // firstView は height 400 - 500 くらいがベストやと思う
         baseView.frame = CGRect(x: 10, y: 500, width: viewX - 20, height: 300)
         baseView.layer.borderWidth = 1
@@ -94,6 +100,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let base_frame = baseView.frame
         
+        // MARK: - set selectImage
         selectImage.frame = CGRect(x: 0, y: 0, width: base_frame.width, height: base_frame.height)
         
         self.view.addSubview(baseView)
@@ -115,12 +122,12 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // MARK: - Storage
     func saveSelectedImageToStorage(){
         // ストレージに保存する対象の画像を定義
-        var targetImageURL = NSURL()
-        targetImageURL = imageURL
+        var targetSelectImageURL = NSURL()
+        targetSelectImageURL = selectImageURL
         
         timeStamp = createTimestamp()
         
-        uploadImage(targetImageURL: targetImageURL)
+        uploadImage(targetSelectImageURL: targetSelectImageURL)
 
     }
     
@@ -136,13 +143,13 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     // MARK: - image upload to storage
-    func uploadImage(targetImageURL: NSURL){
+    func uploadImage(targetSelectImageURL: NSURL){
         
         let storage = Storage.storage()
         
         let storageRef = storage.reference()
         
-        let localFile = URL(string: "\(targetImageURL)")!
+        let localFile = URL(string: "\(targetSelectImageURL)")!
         
         let imageRef = storageRef.child("images/\(timeStamp).jpg")
         
@@ -203,7 +210,6 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @objc func storeDataInDB(){
         
         let db = Firestore.firestore()
-        // これをボタンによって発火する関数としたい.
         // Add a new document with a generated ID
         var ref: DocumentReference? = nil
         
@@ -212,11 +218,15 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         ref = db.collection("user").addDocument(data: [
             "userId": "sample",
             "submission": [
+                "submisstionId": "sample_submission",
                 "url": "images/\(timeStamp).jpg",
                 "caption": textView.text,
                 "hashtags": textView.text.hashtags(),
                 "likes": 0,
-            ]
+            ],
+            "liked_submissionId": [
+                "submissionId": ""
+            ],
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
@@ -260,7 +270,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         selectImage.image = img
         selectImage.contentMode = .scaleAspectFit
         
-        imageURL = url
+        selectImageURL = url
         
         imagePicker.dismiss(animated: true, completion: nil)
     }

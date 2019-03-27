@@ -14,6 +14,7 @@ target 'RaView' do
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
   pod 'UITextView+Placeholder'
+  pod 'HeartButton'
 # Pods for RaView
 
   target 'RaViewTests' do
