@@ -205,6 +205,9 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    // MARK: - addNewUser()
+    // New User In Database
+    // 新規ログイン時に実行し, UserDefaults に保存
     func addNewUser() -> String {
         
         print("addNewUser")
@@ -216,27 +219,6 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             "name": name
             ])
         return "\(newUserRef.documentID)"
-    }
-    
-    func checkUser() -> String {
-        
-        let db = Firestore.firestore()
-        
-        var UserID = ""
-        
-        print("checkUser")
-        
-        db.collection("users").whereField("name", isEqualTo: "sample")
-            .addSnapshotListener { querySnapshot, error in
-                guard let documents = querySnapshot?.documents else {
-                    print("Error fetching documents: \(error!)")
-                    return
-                }
-                let tmp = documents.map{ $0.documentID }
-                UserID = tmp[0]
-        }
-        print("UserID: \(UserID)")
-        return UserID
     }
 
     //  MARK: - Database
