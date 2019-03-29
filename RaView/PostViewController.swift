@@ -46,7 +46,6 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     var timeStamp = String()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -126,9 +125,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         var targetSelectImageURL = NSURL()
         targetSelectImageURL = selectImageURL
         
-        timeStamp = createTimestamp()
-        
         uploadImage(targetSelectImageURL: targetSelectImageURL)
+        textView.text = "posting complete"
 
     }
     
@@ -206,46 +204,89 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             }
         }
     }
+    
+    func addNewUser() -> String {
+        
+        print("addNewUser")
+        let db = Firestore.firestore()
+        let newUserRef = db.collection("users").document()
+        let name = "sample"
+        
+        newUserRef.setData([
+            "name": name
+            ])
+        return "\(newUserRef.documentID)"
+    }
+    
+    func checkUser() -> String {
+        
+        let db = Firestore.firestore()
+        
+        var UserID = ""
+        
+        print("checkUser")
+        
+        db.collection("users").whereField("name", isEqualTo: "sample")
+            .addSnapshotListener { querySnapshot, error in
+                guard let documents = querySnapshot?.documents else {
+                    print("Error fetching documents: \(error!)")
+                    return
+                }
+                let tmp = documents.map{ $0.documentID }
+                UserID = tmp[0]
+        }
+        print("UserID: \(UserID)")
+        return UserID
+    }
 
     //  MARK: - Database
     @objc func storeDataInDB(){
         
         let db = Firestore.firestore()
-        // Add a new document with a generated ID
-        var ref: DocumentReference? = nil
+        
+        timeStamp = createTimestamp()
+        
+        var text = String()
+        text = textView.text
+        
+        let hashTags = text.hashtags()
+        
+        // User sample の UserID これを UserDefaultsの値にすることで管理ができそう. これは新規ログインの時に作成する.
+        let UserID  = "0RrmbbZrh23KPNB5rEbh"
+        
+        let UserRef = db.collection("users").document(UserID)
+        
+        let newPostRef = db.collection("posts").document()
+        
+        newPostRef.setData([
+            "url": "images/\(timeStamp).jpg",
+            "caption": text,
+            "likes": 0,
+            "createdAt": Date(),
+            "author": UserID
+            ])
+        
+        let UserPostRef = UserRef.collection("posted").document()
+        
+        UserPostRef.setData([
+                newPostRef.documentID : true
+                ])
+        
+        for data in hashTags {
+            
+            let newTagsRef = db.collection("tags").document()
+            let newPostTagsRef = newPostRef.collection("tags").document()
+            
+            newTagsRef.setData([
+                "tag_name": data
+                ])
+            
+            newPostTagsRef.setData([
+                newTagsRef.documentID : true
+                ])
+        }
         
         saveSelectedImageToStorage()
-        
-        ref = db.collection("user").addDocument(data: [
-            "userId": "sample",
-            "submission": [
-                "submisstionId": "sample_submission",
-                "url": "images/\(timeStamp).jpg",
-                "caption": textView.text,
-                "hashtags": textView.text.hashtags(),
-                "likes": 0,
-            ],
-            "liked_submissionId": [
-                "submissionId": ""
-            ],
-        ]) { err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Document added with ID: \(ref!.documentID)")
-            }
-        }
-        
-        db.collection("users").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
-                }
-            }
-        }
-        textView.text = "posting complete"
     }
     
     // MARK: - Image

@@ -10,6 +10,7 @@ import UIKit
 import FontAwesome_swift
 import HeartButton
 import SwiftyAttributedString
+import Firebase
 
 // MARK: - Custom ClearButton
 class MyClearButton: UIButton {
@@ -58,11 +59,11 @@ class  HomeViewController: UIViewController {
         baseView.frame = CGRect(x: 0, y: 50, width: viewX, height: 400)
         scrollView.addSubview(baseView)
         
-        let kanan = UIImageView()
-        kanan.frame = CGRect(x: 0, y: 0, width: baseView.frame.width, height: baseView.frame.height)
-        kanan.image = UIImage(named: "placeholder_image")
-        kanan.contentMode = .scaleAspectFit
-        baseView.addSubview(kanan)
+        let firstImage = UIImageView()
+        firstImage.frame = CGRect(x: 0, y: 0, width: baseView.frame.width, height: baseView.frame.height)
+        firstImage.image = UIImage(named: "placeholder_image")
+        firstImage.contentMode = .scaleAspectFit
+        baseView.addSubview(firstImage)
         
         // MARK: set caption
         let textView = UITextView()
@@ -78,18 +79,18 @@ class  HomeViewController: UIViewController {
         baseView2.frame = CGRect(x: 0, y: viewY + 50, width: viewX, height: 400)
         scrollView.addSubview(baseView2)
         
-        let mari = UIImageView()
-        mari.frame = CGRect(x: 0, y: 0, width: baseView2.frame.width, height: baseView2.frame.height)
-        mari.image = UIImage(named: "placeholder_image")
-        mari.contentMode = .scaleAspectFit
-        baseView2.addSubview(mari)
+        let secondImage = UIImageView()
+        secondImage.frame = CGRect(x: 0, y: 0, width: baseView2.frame.width, height: baseView2.frame.height)
+        secondImage.image = UIImage(named: "placeholder_image")
+        secondImage.contentMode = .scaleAspectFit
+        baseView2.addSubview(secondImage)
         
 //        //set clearbutton
-//        let clearButton_kanan = ClearButton(imv: kanan)
-//        scrollView.addSubview(clearButton_kanan)
+//        let clearButton_firstImage = ClearButton(imv: firstImage)
+//        scrollView.addSubview(clearButton_firstImage)
 //
-//        let clearButton_mari = ClearButton(imv: mari)
-//        scrollView.addSubview(clearButton_mari)
+//        let clearButton_secondImage = ClearButton(imv: secondImage)
+//        scrollView.addSubview(clearButton_secondImage)
         
         // set HeartButton
         heartButton.frame = CGRect(x: viewX - 50, y: 470, width: 30, height: 30)
@@ -112,6 +113,15 @@ class  HomeViewController: UIViewController {
         //add Scroll View
         self.view.addSubview(scrollView)
         
+    }
+    
+    // MARK: - get document
+    func getDocumentFromFirebase() -> [String:String] {
+        
+        let db = Firestore.firestore()
+        
+        let a:[String:String] = ["a": "a"]
+        return a
     }
     
     // MARK: - define attributeText
