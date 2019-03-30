@@ -12,6 +12,7 @@ target 'RaView' do
   pod ‘FontAwesome.swift’
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
+  pod 'FirebaseUI/Storage'
   pod 'Firebase/Firestore'
   pod 'UITextView+Placeholder'
   pod 'HeartButton'

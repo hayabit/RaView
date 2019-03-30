@@ -5,15 +5,15 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.2):
     - BoringSSL-GRPC/Interface (= 0.0.2)
   - BoringSSL-GRPC/Interface (0.0.2)
-  - Firebase/Core (5.19.0):
+  - Firebase/Core (5.20.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.8.0)
-  - Firebase/CoreOnly (5.19.0):
-    - FirebaseCore (= 5.4.0)
-  - Firebase/Firestore (5.19.0):
+  - Firebase/CoreOnly (5.20.0):
+    - FirebaseCore (= 5.4.1)
+  - Firebase/Firestore (5.20.0):
     - Firebase/CoreOnly
-    - FirebaseFirestore (= 1.1.0)
-  - Firebase/Storage (5.19.0):
+    - FirebaseFirestore (= 1.2.0)
+  - Firebase/Storage (5.20.0):
     - Firebase/CoreOnly
     - FirebaseStorage (= 3.1.1)
   - FirebaseAnalytics (5.8.0):
@@ -26,25 +26,25 @@ PODS:
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
   - FirebaseAuthInterop (1.0.0)
-  - FirebaseCore (5.4.0):
+  - FirebaseCore (5.4.1):
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/Logger (~> 5.2)
-  - FirebaseFirestore (1.1.0):
+  - FirebaseFirestore (1.2.0):
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
-    - FirebaseFirestore/abseil-cpp (= 1.1.0)
+    - FirebaseFirestore/abseil-cpp (= 1.2.0)
     - "gRPC-C++ (= 0.0.6)"
     - leveldb-library (~> 1.20)
     - nanopb (~> 0.3.901)
     - Protobuf (~> 3.1)
-  - FirebaseFirestore/abseil-cpp (1.1.0):
+  - FirebaseFirestore/abseil-cpp (1.2.0):
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
     - "gRPC-C++ (= 0.0.6)"
     - leveldb-library (~> 1.20)
     - nanopb (~> 0.3.901)
     - Protobuf (~> 3.1)
-  - FirebaseInstanceID (3.8.0):
+  - FirebaseInstanceID (3.8.1):
     - FirebaseCore (~> 5.2)
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/UserDefaults (~> 5.2)
@@ -52,6 +52,9 @@ PODS:
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
     - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseUI/Storage (6.2.1):
+    - Firebase/Storage (~> 5.0)
+    - SDWebImage (~> 4.0)
   - FontAwesome.swift (1.6.0)
   - GoogleAppMeasurement (5.8.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
@@ -102,6 +105,9 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.7.0)
+  - SDWebImage (4.4.6):
+    - SDWebImage/Core (= 4.4.6)
+  - SDWebImage/Core (4.4.6)
   - SwiftyAttributedString (1.0.1)
   - "UITextView+Placeholder (1.2.1)"
 
@@ -109,6 +115,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
   - Firebase/Storage
+  - FirebaseUI/Storage
   - FontAwesome.swift
   - HeartButton
   - SwiftyAttributedString
@@ -124,6 +131,7 @@ SPEC REPOS:
     - FirebaseFirestore
     - FirebaseInstanceID
     - FirebaseStorage
+    - FirebaseUI
     - FontAwesome.swift
     - GoogleAppMeasurement
     - GoogleUtilities
@@ -134,18 +142,20 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - SDWebImage
     - SwiftyAttributedString
     - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
-  Firebase: c60d49e9c2630875a96207d15e2affb8364996d1
+  Firebase: 5090da4bb82900179004133bb2b2178919387fd9
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
-  FirebaseCore: 22a79a961c3951ef2f77b67bfbc99e454247b319
-  FirebaseFirestore: 1531eefe02da66be6860966ac4e2cdac635706e2
-  FirebaseInstanceID: cf488df2f4b79782f0e430b04a0e17c0aa7979b2
+  FirebaseCore: f1a9a8be1aee4bf71a2fc0f4096df6788bdfda61
+  FirebaseFirestore: e1f9c44452d0de51a68b08af8c131c22ca6ce8fa
+  FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
   FirebaseStorage: 6162ef4322502b818d9de0ec552f5226d283de43
+  FirebaseUI: c9e227a7d44e2e422a461cb3f4ead8dc5c7326e6
   FontAwesome.swift: 71a422e7b209ee940c7c21a5d13964ecf2897ca4
   GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
@@ -156,9 +166,10 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
+  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SwiftyAttributedString: 0a90d4e6d8a7ebf9432edd75cf992ae2d09ffdcd
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: d413e59e3237450fecc3f516ab58f665d427b651
+PODFILE CHECKSUM: 62097dcefe1e7b14c0114435ef00094fa06b8abf
 
 COCOAPODS: 1.6.1
