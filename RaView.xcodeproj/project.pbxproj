@@ -15,6 +15,9 @@
 		CA166C6D221EBEB90038DD3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA166C6B221EBEB90038DD3C /* LaunchScreen.storyboard */; };
 		CA166C78221EBEBA0038DD3C /* RaViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA166C77221EBEBA0038DD3C /* RaViewTests.swift */; };
 		CA166C83221EBEBA0038DD3C /* RaViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA166C82221EBEBA0038DD3C /* RaViewUITests.swift */; };
+		CA1FD17122539D9E00D01DDA /* HomeSub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1FD17022539D9E00D01DDA /* HomeSub.storyboard */; };
+		CA4CA08B225204280014D4BF /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CA08A225204280014D4BF /* CustomTableViewCell.swift */; };
+		CA4CA08D225204C40014D4BF /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4CA08C225204C40014D4BF /* PostModel.swift */; };
 		CA97BC132226F5A100E304FF /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA97BC112226F5A100E304FF /* Home.storyboard */; };
 		CA97BD402229225300E304FF /* SearchViewContrller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA97BD3F2229225300E304FF /* SearchViewContrller.swift */; };
 		CA97BD42222922E200E304FF /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA97BD41222922E200E304FF /* ThirdViewController.swift */; };
@@ -65,6 +68,9 @@
 		CA166C7E221EBEBA0038DD3C /* RaViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RaViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA166C82221EBEBA0038DD3C /* RaViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaViewUITests.swift; sourceTree = "<group>"; };
 		CA166C84221EBEBA0038DD3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA1FD17022539D9E00D01DDA /* HomeSub.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeSub.storyboard; sourceTree = "<group>"; };
+		CA4CA08A225204280014D4BF /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		CA4CA08C225204C40014D4BF /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		CA97BBFE2226787E00E304FF /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		CA97BC002226787E00E304FF /* FontAwesomeBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontAwesomeBarButtonItem.swift; sourceTree = "<group>"; };
 		CA97BC012226787E00E304FF /* FontAwesomeSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontAwesomeSegmentedControl.swift; sourceTree = "<group>"; };
@@ -181,8 +187,11 @@
 				CA97BD4922293F9100E304FF /* CustomNavigationBar.swift */,
 				CA97BD4B222948D900E304FF /* MainTabBarController.swift */,
 				CA97BD56224B81B500E304FF /* HashTagController.swift */,
+				CA4CA08C225204C40014D4BF /* PostModel.swift */,
+				CA4CA08A225204280014D4BF /* CustomTableViewCell.swift */,
 				CA166C64221EBEB70038DD3C /* HomeViewController.swift */,
 				CA97BC112226F5A100E304FF /* Home.storyboard */,
+				CA1FD17022539D9E00D01DDA /* HomeSub.storyboard */,
 				CA97BD3F2229225300E304FF /* SearchViewContrller.swift */,
 				CA97BD4322292DB600E304FF /* Search.storyboard */,
 				CA97BD41222922E200E304FF /* ThirdViewController.swift */,
@@ -359,6 +368,7 @@
 				CA97BC132226F5A100E304FF /* Home.storyboard in Resources */,
 				CA166C6D221EBEB90038DD3C /* LaunchScreen.storyboard in Resources */,
 				CA97BD5322477FA400E304FF /* Post.storyboard in Resources */,
+				CA1FD17122539D9E00D01DDA /* HomeSub.storyboard in Resources */,
 				CA166C6A221EBEB90038DD3C /* Assets.xcassets in Resources */,
 				CA97BD4622292DC600E304FF /* Third.storyboard in Resources */,
 				CA97BD4E2233624800E304FF /* GoogleService-Info.plist in Resources */,
@@ -398,7 +408,9 @@
 				"${BUILT_PRODUCTS_DIR}/HeartButton/HeartButton.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyAttributedString/SwiftyAttributedString.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeableTabBarController/SwipeableTabBarController.framework",
 				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -416,7 +428,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HeartButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyAttributedString.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeableTabBarController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -509,7 +523,9 @@
 				CA97BD4C222948D900E304FF /* MainTabBarController.swift in Sources */,
 				CA166C63221EBEB70038DD3C /* AppDelegate.swift in Sources */,
 				CA97BD42222922E200E304FF /* ThirdViewController.swift in Sources */,
+				CA4CA08B225204280014D4BF /* CustomTableViewCell.swift in Sources */,
 				CA97BD402229225300E304FF /* SearchViewContrller.swift in Sources */,
+				CA4CA08D225204C40014D4BF /* PostModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

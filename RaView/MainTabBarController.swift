@@ -8,6 +8,11 @@
 
 import UIKit
 import FontAwesome_swift
+import SwipeableTabBarController
+
+class UITabBarController: SwipeableTabBarController {
+    // Do all your subclassing as a regular UITabBarController.
+}
 
 class MainTabBarController: UITabBarController {
     
@@ -53,7 +58,7 @@ class MainTabBarController: UITabBarController {
 //        let naviVC3 = CustomNavigationController(rootVC: thirdVC, naviBarClass: CustomNavigationBar.self, toolbarClass: nil)
         
 //        let tabs = [naviVC, naviVC2, naviVC3]
-        let tabs = [naviVC, searchVC, thirdVC, postVC]
+        let tabs = [naviVC, searchVC, /*thirdVC,*/ postVC]
         self.viewControllers = tabs
     }
     

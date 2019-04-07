@@ -17,6 +17,8 @@ target 'RaView' do
   pod 'UITextView+Placeholder'
   pod 'HeartButton'
   pod 'SwiftyAttributedString'
+  pod 'SwipeableTabBarController'
+  pod 'SnapKit'
 # Pods for RaView
 
   target 'RaViewTests' do

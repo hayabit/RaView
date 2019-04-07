@@ -34,7 +34,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.view.backgroundColor = .white
+        self.view.backgroundColor = .white
 //
 //        let viewX = self.view.frame.width
 //

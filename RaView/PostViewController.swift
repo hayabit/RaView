@@ -18,7 +18,7 @@ extension String
     //       文字列内のハッシュタグを正規表現によって抽出し, 配列に保存する.
     func hashtags() -> [String]
     {
-        if let regex = try? NSRegularExpression(pattern: "#[a-z0-9\\p{Han}\\p{Hiragana}\\p{Katakana}ー]+", options: .caseInsensitive)
+        if let regex = try? NSRegularExpression(pattern: "#[a-zA-Z0-9\\p{Han}\\p{Hiragana}\\p{Katakana}ー]+", options: .caseInsensitive)
         {
             let string = self as NSString
             
@@ -127,6 +127,9 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         uploadImage(targetSelectImageURL: targetSelectImageURL)
         textView.text = "posting complete"
+        sleep(1)
+//        let homeVC = HomeViewController()
+        self.tabBarController!.selectedIndex = 0
 
     }
     
