@@ -9,11 +9,16 @@ target 'RaView' do
   platform :ios, ‘9.0’
 
   use_frameworks!
-  pod ‘FontAwesome.swift’
+  pod ‘FontAwesome.swift’ , '1.6.0'
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
+  pod 'FirebaseUI/Storage'
   pod 'UITextView+Placeholder'
+  pod 'HeartButton'
+  pod 'SwiftyAttributedString'
+  pod 'SnapKit'
+  pod 'SwipeableTabBarController'
 # Pods for RaView
 
   target 'RaViewTests' do

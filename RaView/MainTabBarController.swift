@@ -8,6 +8,11 @@
 
 import UIKit
 import FontAwesome_swift
+import SwipeableTabBarController
+
+class UITabBarController: SwipeableTabBarController {
+    // Do all your subclassing as a regular UITabBarController.
+}
 
 class MainTabBarController: UITabBarController {
     
@@ -34,11 +39,6 @@ class MainTabBarController: UITabBarController {
         searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage.fontAwesomeIcon(name: .search, style: .solid, textColor: .black, size: CGSize(width: 30, height: 30)), tag: 2)
         viewControllers.append(searchVC)
         
-        let thirdSB = UIStoryboard(name: "Third", bundle: nil)
-        let thirdVC = thirdSB.instantiateInitialViewController()! as UIViewController
-        thirdVC.tabBarItem = UITabBarItem(title: "Third", image: UIImage.fontAwesomeIcon(name: .plusSquare, style: .regular, textColor: .black, size: CGSize(width: 30, height: 30)), tag: 3)
-        viewControllers.append(thirdVC)
-        
         let postSB = UIStoryboard(name: "Post", bundle: nil)
         let postVC = postSB.instantiateInitialViewController()! as UIViewController
         postVC.tabBarItem = UITabBarItem(title: "Post", image: UIImage.fontAwesomeIcon(name: .plusSquare, style: .regular, textColor: .black, size: CGSize(width: 30, height: 30)), tag: 4)
@@ -53,7 +53,7 @@ class MainTabBarController: UITabBarController {
 //        let naviVC3 = CustomNavigationController(rootVC: thirdVC, naviBarClass: CustomNavigationBar.self, toolbarClass: nil)
         
 //        let tabs = [naviVC, naviVC2, naviVC3]
-        let tabs = [naviVC, searchVC, thirdVC, postVC]
+        let tabs = [naviVC, searchVC, postVC]
         self.viewControllers = tabs
     }
     

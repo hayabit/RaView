@@ -8,111 +8,175 @@
 import UIKit
 import Firebase
 import UITextView_Placeholder
+import SnapKit
+import FontAwesome_swift
 
-//extension String
-//{
-//    func hashtags() -> [String]
-//    {
-//        if let regex = try? NSRegularExpression(pattern: "#[a-z0-9\\p{Han}\\p{Hiragana}\\p{Katakana}ー]+", options: .caseInsensitive)
-//        {
-//            let string = self as NSString
-//
-//            return regex.matches(in: self, options: [], range: NSRange(location: 0, length: string.length)).map {
-//                string.substring(with: $0.range).replacingOccurrences(of: "#", with: "").lowercased()
-//            }
-//        }
-//
-//        return []
-//    }
-//}
+class Post : NSObject {
+    
+    var caption : String
+    var url : String
+    var likes : Int
+    
+    init(caption: String, url: String, likes: Int){
+        self.caption = caption
+        self.url = url
+        self.likes = likes
+    }
+}
 
 class SearchViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     // used Editing caption
     var textView = UITextView()
+    var posts = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        self.view.backgroundColor = .white
-//
-//        let viewX = self.view.frame.width
-//
-//        let name = UILabel()
-//        name.text = "Caption"
-//        name.frame = CGRect(x: 20, y: 100, width: 80, height: 30)
-//        self.view.addSubview(name)
-//
-//        textView.frame = CGRect(x: 10, y: 150, width: viewX - 20, height: 300)
-//        textView.layer.borderWidth = 1
-//        textView.font = UIFont.systemFont(ofSize: 14.0)
-//        textView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-//        textView.isEditable = true
-//        textView.placeholder = "キャプションを書く。ハッシュタグも入れてくれると嬉しいです。"
-//        textView.placeholderColor = UIColor.lightGray
-////        textView.isEditable = false
-////        にするとできるっぽい. Firstで使えるね.
-////        textView.dataDetectorTypes = .link
-////        textView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)]
-//
-//        self.view.addSubview(textView)
-//
-//        let imageButton_image = UIImageView()
-//        imageButton_image.frame = CGRect(x: 100, y: 100, width: 30, height: 30)
-//        imageButton_image.image = UIImage.fontAwesomeIcon(name: .paperPlane,
-//                                                          style: .regular,
-//                                                          textColor: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1),
-//                                                          size: CGSize(width: 30, height: 30))
-//        self.view.addSubview(imageButton_image)
-//
-//        let imageButton_button = UIButton(frame:CGRect(x: imageButton_image.frame.origin.x,
-//                                                       y: imageButton_image.frame.origin.y,
-//                                                       width: imageButton_image.frame.width,
-//                                                       height: imageButton_image.frame.height))
-//        imageButton_button.setTitle(" ", for: .normal)
-//        imageButton_button.addTarget(self, action: #selector(postDB), for: .touchUpInside)
-//        self.view.addSubview(imageButton_button)
-        
+        initView()
     }
-//    入力画面ないしkeyboardの外を押したら、キーボードを閉じる処理
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if (self.textView.isFirstResponder) {
-//            self.textView.resignFirstResponder()
-//        }
-//    }
     
-//    @objc func postDB(){
-//
-//        let db = Firestore.firestore()
-//        // これをボタンによって発火する関数としたい.
-//        // Add a new document with a generated ID
-//        var ref: DocumentReference? = nil
-//
-//        ref = db.collection("users").addDocument(data: [
-//            "user": "sample",
-//            "submissions": [
-//                "url": "https://sample.com/sample.mov",
-//                "caption": textView.text,
-//                "hashtags": textView.text.hashtags(),
-//                "likes": 0,
-//            ]
-//        ]) { err in
-//            if let err = err {
-//                print("Error adding document: \(err)")
-//            } else {
-//                print("Document added with ID: \(ref!.documentID)")
-//            }
-//        }
-//
-//        db.collection("users").getDocuments() { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                for document in querySnapshot!.documents {
-//                    print("\(document.documentID) => \(document.data())")
-//                }
-//            }
-//        }
-//        textView.text = "posting complete"
-//    }
+    
+    private func initView() {
+        
+        let searchButton = UIButton()
+        
+        view.addSubview(textView)
+        textView.snp.makeConstraints { make in
+            make.top.equalTo(view.snp.top).offset(80)
+            make.leading.equalTo(view).offset(20)
+            make.trailing.equalTo(view).inset(20)
+            make.height.equalTo(80)
+        }
+        view.addSubview(searchButton)
+        searchButton.snp.makeConstraints { make in
+            make.center.equalTo(view)
+            make.size.equalTo(50)
+        }
+        textView.layer.borderWidth = 1
+        textView.font = UIFont.systemFont(ofSize: 14.0)
+        textView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        textView.isEditable = true
+        textView.placeholder = "検索"
+        textView.placeholderColor = UIColor.lightGray
+        
+        searchButton.setImage(UIImage.fontAwesomeIcon(name: .search,
+                                                      style: .solid,
+                                                      textColor: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1),
+                                                      size: CGSize(width: 50, height: 50)), for: .normal)
+        searchButton.setTitle(" ", for: .normal)
+        searchButton.addTarget(self, action: #selector(searchDB), for: .touchUpInside)
+    }
+    
+    // FIXME: - Search
+    // OR検索になってしまっている. -> AND検索 もしくは ファジー検索にすることが望ましい.
+    private func searchTagID(tags: [String]) {
+        
+        var tag_documentIDs = [String]()
+        
+        let db = Firestore.firestore()
+        
+        for tag in tags {
+            db.collection("tags").whereField("tag_name", isEqualTo: tag).getDocuments() { (documentSnapshot, error) in
+                if let error = error {
+                    print("Error fetching document: \(error)")
+                    return
+                } else {
+                    for document in documentSnapshot!.documents {
+                        let tag_documentID = document.documentID
+                        print(tag_documentID)
+                        tag_documentIDs.append(tag_documentID)
+                    }
+                    self.searchPostID(tag_documentIDs: tag_documentIDs)
+                    tag_documentIDs = []
+                }
+            }
+        }
+    }
+    
+    private func searchPostID(tag_documentIDs: [String]) {
+        var post_documentIDs = [String]()
+        let db = Firestore.firestore()
+        db.collection("posts").getDocuments() { (documentSnapshot, error) in
+            if let error = error {
+                print("Error fetching document: \(error)")
+                return
+            } else {
+                for document in documentSnapshot!.documents {
+                    let post_documentID = document.documentID
+                    print(post_documentID)
+                    post_documentIDs.append(post_documentID)
+                }
+                self.searchPosts(tag_documentIDs: tag_documentIDs, post_documentIDs: post_documentIDs)
+            }
+        }
+    }
+    
+    private func searchPosts(tag_documentIDs: [String], post_documentIDs: [String]) {
+        
+        let db = Firestore.firestore()
+        
+        for tag_documentID in tag_documentIDs {
+            for post_documentID in post_documentIDs {
+                let postRef = db.collection("posts").document(post_documentID)
+                postRef.collection("tags").whereField(tag_documentID , isEqualTo: true)
+                    .getDocuments(){ (documentSnapshot, error) in
+                        if let error = error {
+                            print("Error fetching document: \(error)")
+                            return
+                        } else {
+                            for document in documentSnapshot!.documents {
+                                let documentData = document.data()
+                                print(documentData)
+                                postRef.getDocument { (document, error) in
+                                    if let document = document, document.exists {
+                                        let documentData = document.data()
+                                        let documentID = document.documentID
+                                        print("matched documentID : \(documentID)")
+                                        
+                                        guard let caption = documentData?["caption"] else {
+                                            return
+                                        }
+                                        guard let url = documentData?["url"] else {
+                                            return
+                                        }
+                                        guard let likes = documentData?["likes"] else {
+                                            return
+                                        }
+                                        
+                                        let post = Post(caption: caption as! String,
+                                                        url: url as! String,
+                                                        likes: likes as! Int)
+                                        
+                                        self.posts.append(post)
+                                        
+                                        print("caption: \(caption)")
+                                        print("url: \(url)")
+                                        print("likes: \(likes)")
+                                        print("post: \(post)")
+                                    } else {
+                                        print("Document does not exist")
+                                    }
+                                    print("posts: \(self.posts[0].caption)")
+                                }
+                            }
+                        }
+                }
+            }
+        }
+    }
+    
+    @objc private func searchDB(){
+        
+        let searchStr = textView.text
+        let tags = searchStr!.components(separatedBy: .whitespaces)
+        
+        searchTagID(tags: tags)
+    }
+    
+    //    入力画面ないしkeyboardの外を押したら、キーボードを閉じる処理
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (self.textView.isFirstResponder) {
+            self.textView.resignFirstResponder()
+        }
+    }
 }

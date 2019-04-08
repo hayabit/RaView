@@ -50,6 +50,23 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initView()
+        
+//        selectImageFromPhotoLibrary()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        selectImageFromPhotoLibrary()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        textView.text = ""
+        selectImage.image = UIImage(named: "placeholder_image")
+    }
+    
+    private func initView() {
+        
         let viewX = self.view.frame.width
         
         let label_caption = UILabel()
@@ -95,14 +112,12 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let base_frame = baseView.frame
         
         selectImage.frame = CGRect(x: 0, y: 0, width: base_frame.width, height: base_frame.height)
+        selectImage.image = UIImage(named: "placeholder_image")
         
         self.view.addSubview(baseView)
         self.baseView.addSubview(selectImage)
         
         print("viewDidLoad")
-        
-        selectImageFromPhotoLibrary()
-        
     }
     
     // MARK: - 入力画面ないしkeyboardの外を押したら、キーボードを閉じる処理
@@ -121,6 +136,9 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         timeStamp = createTimestamp()
         
         uploadImage(targetImageURL: targetImageURL)
+        textView.text = "posting complete"
+        sleep(1)
+        self.tabBarController!.selectedIndex = 0
 
     }
     
@@ -203,38 +221,50 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @objc func storeDataInDB(){
         
         let db = Firestore.firestore()
-        // これをボタンによって発火する関数としたい.
-        // Add a new document with a generated ID
-        var ref: DocumentReference? = nil
+        
+        timeStamp = createTimestamp()
+        
+        var text = String()
+        text = textView.text
+        
+        let hashTags = text.hashtags()
+        
+        // User sample の UserID これを UserDefaultsの値にすることで管理ができそう. これは新規ログインの時に作成する.
+        let UserID  = "0RrmbbZrh23KPNB5rEbh"
+        
+        let UserRef = db.collection("users").document(UserID)
+        
+        let newPostRef = db.collection("posts").document()
+        
+        newPostRef.setData([
+            "url": "images/\(timeStamp).jpg",
+            "caption": text,
+            "likes": 0,
+            "createdAt": Date(),
+            "author": UserID
+            ])
+        
+        let UserPostRef = UserRef.collection("posted").document()
+        
+        UserPostRef.setData([
+            newPostRef.documentID : true
+            ])
+        
+        for data in hashTags {
+            
+            let newTagsRef = db.collection("tags").document()
+            let newPostTagsRef = newPostRef.collection("tags").document()
+            
+            newTagsRef.setData([
+                "tag_name": data
+                ])
+            
+            newPostTagsRef.setData([
+                newTagsRef.documentID : true
+                ])
+        }
         
         saveSelectedImageToStorage()
-        
-        ref = db.collection("user").addDocument(data: [
-            "userId": "sample",
-            "submission": [
-                "url": "images/\(timeStamp).jpg",
-                "caption": textView.text,
-                "hashtags": textView.text.hashtags(),
-                "likes": 0,
-            ]
-        ]) { err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Document added with ID: \(ref!.documentID)")
-            }
-        }
-        
-        db.collection("users").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
-                }
-            }
-        }
-        textView.text = "posting complete"
     }
     
     // MARK: - Image
@@ -268,6 +298,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         print("DidCancel")
         imagePicker.dismiss(animated: true, completion: nil)
+        self.tabBarController!.selectedIndex = 0
     }
     
 }
