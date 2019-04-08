@@ -46,6 +46,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     var timeStamp = String()
     
+    private var flag = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,12 +59,15 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        selectImageFromPhotoLibrary()
+        if flag == false {
+            selectImageFromPhotoLibrary()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         textView.text = ""
         selectImage.image = UIImage(named: "placeholder_image")
+        flag = false
     }
     
     private func initView() {
@@ -291,6 +296,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         selectImage.contentMode = .scaleAspectFit
         
         imageURL = url
+        
+        flag = true
         
         imagePicker.dismiss(animated: true, completion: nil)
     }
