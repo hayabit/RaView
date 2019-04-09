@@ -10,6 +10,38 @@ Ramen + View ということで, RaView と名付けました.
 
 ## デモ
 
+### Home
+
+![home](https://github.com/hayabit/RaView/tree/master/Images/demo_home.PNG "ホーム画面のデモ")
+
+- ホームでは Firebase に投稿されているデータを一覧として表示します.
+- ハッシュタグを検出して色を変えています.
+- スクロールビューを用いて多数の投稿を見られるようにしています.
+
+### Search
+
+![search](https://github.com/hayabit/RaView/tree/master/Images/demo_search.PNG "検索画面のデモ")
+
+
+結果: 実行結果
+```
+matched documentID : AVIUzoO2064AGe1887nB
+caption: フグ #水 #吐く
+url: images/20190331003532.jpg
+likes: 0
+```
+
+
+- テキストフィールドに入力した単語に対してハッシュタグのデータベースから投稿を検索します.
+
+
+### Post
+
+![post](https://github.com/hayabit/RaView/tree/master/Images/demo_post.PNG "投稿画面のデモ")
+
+- 画面に遷移した際にカメラロールを起動し, 画像を選択することができます.
+- 選択後に投稿のためのキャプションを書き投稿することでデータベースに保存します.
+
 ## 使用した技術
 
 - Swift(4.2)
