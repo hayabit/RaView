@@ -8,7 +8,6 @@
 
 import UIKit
 import AVKit
-import AVFoundation
 import Firebase
 import UITextView_Placeholder
 
