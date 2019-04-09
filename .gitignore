@@ -79,3 +79,7 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+# API key
+RaView/GoogleService-Info.plist
+RaView/Info.plist
