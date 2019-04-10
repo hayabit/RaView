@@ -23,7 +23,7 @@ Ramen + View ということで, RaView と名付けました.
 ![search](https://github.com/hayabit/RaView/blob/images/demo_search.PNG)
 
 
-結果: 実行結果
+実行結果
 ```
 matched documentID : AVIUzoO2064AGe1887nB
 caption: フグ #水 #吐く
