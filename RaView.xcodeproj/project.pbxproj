@@ -18,9 +18,7 @@
 		CA1FD173225A418300D01DDA /* HashTagController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FD172225A418300D01DDA /* HashTagController.swift */; };
 		CA97BC132226F5A100E304FF /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA97BC112226F5A100E304FF /* Home.storyboard */; };
 		CA97BD402229225300E304FF /* SearchViewContrller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA97BD3F2229225300E304FF /* SearchViewContrller.swift */; };
-		CA97BD42222922E200E304FF /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA97BD41222922E200E304FF /* ThirdViewController.swift */; };
 		CA97BD4422292DB600E304FF /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA97BD4322292DB600E304FF /* Search.storyboard */; };
-		CA97BD4622292DC600E304FF /* Third.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA97BD4522292DC600E304FF /* Third.storyboard */; };
 		CA97BD4822293D8E00E304FF /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA97BD4722293D8E00E304FF /* CustomNavigationController.swift */; };
 		CA97BD4A22293F9100E304FF /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA97BD4922293F9100E304FF /* CustomNavigationBar.swift */; };
 		CA97BD4C222948D900E304FF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA97BD4B222948D900E304FF /* MainTabBarController.swift */; };
@@ -84,9 +82,7 @@
 		CA97BC0E2226787E00E304FF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CA97BC122226F5A100E304FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = RaView/Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		CA97BD3F2229225300E304FF /* SearchViewContrller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewContrller.swift; sourceTree = "<group>"; };
-		CA97BD41222922E200E304FF /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		CA97BD4322292DB600E304FF /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
-		CA97BD4522292DC600E304FF /* Third.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Third.storyboard; sourceTree = "<group>"; };
 		CA97BD4722293D8E00E304FF /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		CA97BD4922293F9100E304FF /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		CA97BD4B222948D900E304FF /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -185,8 +181,6 @@
 				CA97BC112226F5A100E304FF /* Home.storyboard */,
 				CA97BD3F2229225300E304FF /* SearchViewContrller.swift */,
 				CA97BD4322292DB600E304FF /* Search.storyboard */,
-				CA97BD41222922E200E304FF /* ThirdViewController.swift */,
-				CA97BD4522292DC600E304FF /* Third.storyboard */,
 				CA97BD5022477BD500E304FF /* PostViewController.swift */,
 				CA97BD5222477FA400E304FF /* Post.storyboard */,
 				CA166C6B221EBEB90038DD3C /* LaunchScreen.storyboard */,
@@ -360,7 +354,6 @@
 				CA166C6D221EBEB90038DD3C /* LaunchScreen.storyboard in Resources */,
 				CA97BD5322477FA400E304FF /* Post.storyboard in Resources */,
 				CA166C6A221EBEB90038DD3C /* Assets.xcassets in Resources */,
-				CA97BD4622292DC600E304FF /* Third.storyboard in Resources */,
 				CA97BD4E2233624800E304FF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,7 +505,6 @@
 				CA97BD5122477BD500E304FF /* PostViewController.swift in Sources */,
 				CA97BD4C222948D900E304FF /* MainTabBarController.swift in Sources */,
 				CA166C63221EBEB70038DD3C /* AppDelegate.swift in Sources */,
-				CA97BD42222922E200E304FF /* ThirdViewController.swift in Sources */,
 				CA97BD402229225300E304FF /* SearchViewContrller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,12 +13,6 @@ import SwiftyAttributedString
 import Firebase
 import FirebaseUI
 
-class MyClearButton: UIButton {
-    
-    var value = UIImageView()
-    
-}
-
 extension NSAttributedString {
     
     func replace(pattern: String) -> NSMutableAttributedString {
