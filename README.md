@@ -12,7 +12,7 @@ Ramen + View ということで, RaView と名付けました.
 
 ### Home
 
-![home](https://github.com/hayabit/RaView/tree/master/Images/demo_home.PNG)
+![home](https://github.com/hayabit/RaView/blob/images/demo_home.PNG)
 
 - ホームでは Firebase に投稿されているデータを一覧として表示します.
 - ハッシュタグを検出して色を変えています.
@@ -20,7 +20,7 @@ Ramen + View ということで, RaView と名付けました.
 
 ### Search
 
-![search](https://github.com/hayabit/RaView/tree/master/Images/demo_search.PNG)
+![search](https://github.com/hayabit/RaView/blob/images/demo_search.PNG)
 
 
 結果: 実行結果
@@ -37,7 +37,7 @@ likes: 0
 
 ### Post
 
-![post](https://github.com/hayabit/RaView/tree/master/Images/demo_post.PNG)
+![post](https://github.com/hayabit/RaView/blob/images/demo_post.PNG)
 
 - 画面に遷移した際にカメラロールを起動し, 画像を選択することができます.
 - 選択後に投稿のためのキャプションを書き投稿することでデータベースに保存します.
