@@ -10,6 +10,8 @@ Ramen + View ということで, RaView と名付けました.
 
 ## デモ
 
+![demo](https://github.com/hayabit/RaView/blob/images/demo.gif)
+
 ### Home
 
 ![home](https://github.com/hayabit/RaView/blob/images/demo_home.PNG)
