@@ -10,6 +10,12 @@ Ramen + View ということで, RaView と名付けました.
 
 ## デモ
 
+全体的なデモです.
+
+画面遷移はスワイプによる遷移とタブバーによる遷移が可能です.
+
+詳しい説明は下記を参照ください.
+
 ![demo](https://github.com/hayabit/RaView/blob/images/demo.gif)
 
 ### Home
